@@ -5,27 +5,32 @@ import org.junit.Test;
 
 public class PalindromTest {
 	@Test
-	public void testIsPalindronXYYX() {
+	public void testIsPalindromXYYX() {
 		Assert.assertTrue(Palindrom.IsPalindrom("XYYX"));
 	}
 
 	@Test
-	public void testIsPalindronXYZYX() {
+	public void testIsPalindromXYZYX() {
 		Assert.assertTrue(Palindrom.IsPalindrom("XYZYX"));
 	}
 
 	@Test
-	public void testIsPalindronABCXYZYXCBA() {
+	public void testIsPalindromABCXYZYXCBA() {
 		Assert.assertTrue(Palindrom.IsPalindrom("ABCXYZYXCBA"));
 	}
 
 	@Test
-	public void testIsPalindronEmpty() {
+	public void testIsPalindromEmpty() {
 		Assert.assertTrue(Palindrom.IsPalindrom(""));
 	}
 
 	@Test
-	public void testIsPalindronA() {
+	public void testIsPalindromA() {
 		Assert.assertTrue(Palindrom.IsPalindrom("A"));
+	}
+
+	@Test
+	public void testIsNoPaolindrom() {
+		Assert.assertFalse(Palindrom.IsPalindrom("AB"));
 	}
 }
