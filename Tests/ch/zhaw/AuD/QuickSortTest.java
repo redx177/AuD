@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class ShellSortTest {
+public class QuickSortTest {
 	@Test
 	public void with10Elements() {
-		ShellSort sut = new ShellSort(ShellSort.Sequence.Shell);
+		QuickSort sut = new QuickSort();
 		sut.add(100);
 		sut.add(400);
 		sut.add(200);
@@ -37,7 +37,7 @@ public class ShellSortTest {
 	@Test
 	@Ignore
 	public void with1000Elements() {
-		ShellSort sut = new ShellSort(ShellSort.Sequence.Knuth);
+		QuickSort sut = new QuickSort();
 
 		for (int i = 0; i < 1000; i++) {
 			sut.add(getRandomNumber());
@@ -52,15 +52,8 @@ public class ShellSortTest {
 	@Test
 	@Ignore
 	public void runtimeCheck() {
-		runAndMeasure(ShellSort.Sequence.Shell);
-		//runAndMeasure(ShellSort.Sequence.Hibbard);
-		//runAndMeasure(ShellSort.Sequence.Knuth);
-	}
-
-	private void runAndMeasure(ShellSort.Sequence sequence) {
-		ShellSort sut = new ShellSort(sequence);
-		System.out.println("Sequence: " + sequence.toString());
-		for (int i = 1; i <= 7; i++) {
+		QuickSort sut = new QuickSort();
+		for (int i = 1; i <= 8; i++) {
 			for (int k = 1; k < Math.pow(10, i); k++) {
 				sut.add(getRandomNumber());
 			}
@@ -71,6 +64,7 @@ public class ShellSortTest {
 		}
 		System.out.println();
 	}
+
 
 	public int getRandomNumber() {
 		return 0 + (int)(Math.random() * ((1000) + 1));
