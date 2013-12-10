@@ -43,7 +43,6 @@ public class ShellSort {
 		int h = hValues.get(hPos);
 
 		while (h > 0) {
-			System.out.println("h: "+h);
 
 			for (int i = 0; i < n - h; i++) {
 				int e = list.get(i+h);

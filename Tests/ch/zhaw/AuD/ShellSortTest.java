@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ShellSortTest {
 	@Test
-	public void With10Elements() {
+	public void with10Elements() {
 		ShellSort sut = new ShellSort(ShellSort.Sequence.Shell);
 		sut.add(100);
 		sut.add(400);
@@ -35,7 +35,8 @@ public class ShellSortTest {
 	}
 
 	@Test
-	public void With1000Elements() {
+	@Ignore
+	public void with1000Elements() {
 		ShellSort sut = new ShellSort(ShellSort.Sequence.Knuth);
 
 		for (int i = 0; i < 1000; i++) {
@@ -46,6 +47,29 @@ public class ShellSortTest {
 		for (int i : sorted) {
 			System.out.println(i);
 		}
+	}
+
+	@Test
+	@Ignore
+	public void runtimeCheck() {
+		runAndMeasure(ShellSort.Sequence.Shell);
+		runAndMeasure(ShellSort.Sequence.Hibbard);
+		runAndMeasure(ShellSort.Sequence.Knuth);
+	}
+
+	private void runAndMeasure(ShellSort.Sequence sequence) {
+		ShellSort sut = new ShellSort(sequence);
+		System.out.println("Sequence: " + sequence.toString());
+		for (int i = 1; i <= 6; i++) {
+			for (int k = 1; k < Math.pow(10, i); k++) {
+				sut.add(getRandomNumber());
+			}
+			long t = System.nanoTime();
+			sut.getSorted();
+			t = System.nanoTime() - t;
+			System.out.printf("# of Elements: 10E%d\t\tSec: %,.10f%n", i, ((float)t)/(1000*1000*1000));
+		}
+		System.out.println();
 	}
 
 	public int getRandomNumber() {
