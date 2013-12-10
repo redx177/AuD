@@ -35,9 +35,8 @@ public class ShellSortTest {
 	}
 
 	@Test
-	@Ignore
 	public void With1000Elements() {
-		ShellSort sut = new ShellSort(ShellSort.Sequence.Shell);
+		ShellSort sut = new ShellSort(ShellSort.Sequence.Knuth);
 
 		for (int i = 0; i < 1000; i++) {
 			sut.add(getRandomNumber());
